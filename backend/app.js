@@ -27,13 +27,14 @@ db.on("error", (err) => {
   console.error(err);
 });
 
-//import modals
-const History = require("./modals/calculations");
+//import routes
+const apiRoutes = require("./routes/api");
 
 //Requests
 app.get("/", (req, res) => {
   res.send("App is running");
 });
-app.post("/", (req, res) => {});
+
+app.use("/api", apiRoutes);
 
 app.listen(port, () => console.log(`listening on port ${port}`));
