@@ -27,6 +27,9 @@ db.on("error", (err) => {
   console.error(err);
 });
 
+//import modals
+const History = require("./modals/calculations");
+
 //Requests
 app.get("/", (req, res) => {
   res.send("App is running");
