@@ -5,12 +5,15 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(cors());
 
 //Requests
-app.get("/", (req, res) => {});
+app.get("/", (req, res) => {
+  res.send("App is running");
+});
 app.post("/", (req, res) => {});
 
-app.listen(3001, () => console.log("listening on port 3001"));
+app.listen(port, () => console.log(`listening on port ${port}`));
