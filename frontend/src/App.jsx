@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 const App = () => {
   const [valueOne, setValueOne] = useState(0);
@@ -14,6 +15,23 @@ const App = () => {
   const handleCalculate = () => {
     const sum = parseInt(valueOne) + parseInt(valueTwo);
     setResult(sum);
+    handleSubmit();
+  };
+
+  const handleSubmit = async () => {
+    try {
+      await axios.post("http://localhost:3000/api/calculations/", {
+        value_one: valueOne,
+        value_two: valueTwo,
+        operand: "+",
+      }).then((response) => {
+        alert(response.data)
+      })
+
+      
+    } catch (error) {
+      alert("Error occured");
+    }
   };
 
   return (
