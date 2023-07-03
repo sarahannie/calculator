@@ -1,3 +1,6 @@
-module.exports.connect = {
-  database: process.env.DATABAE,
+const dotenv = require("dotenv");
+dotenv.config();
+
+module.exports = {
+  connect: process.env.DATABASE,
 };

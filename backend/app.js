@@ -10,24 +10,22 @@ const port = process.env.PORT || 3000;
 const config = require("./config");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true})); //support parsing of application /x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true })); //support parsing of application /x-www-form-urlencoded post data
 app.use(cors());
 
 //db
-mongoose.connect(config.database, {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true  
-   });
-   const db = mongoose.connection;
-   //checking if db has connected
-   db.once("open", () => {
-   console.log("connected to db");
-   })
-   db.on("error", (err) => {
-   console.error(err);
-   });
-   
-
+mongoose.connect(config.connect, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+//checking if db has connected
+db.once("open", () => {
+  console.log("connected to db");
+});
+db.on("error", (err) => {
+  console.error(err);
+});
 
 //Requests
 app.get("/", (req, res) => {
