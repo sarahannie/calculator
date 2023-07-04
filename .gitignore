@@ -1,5 +1,8 @@
 /backend/node_modules
+#backend
+/backend/.env
 
+#frontend
 /frontend/node_modules
 # Logs
 logs

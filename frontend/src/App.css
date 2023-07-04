@@ -1,35 +1,34 @@
-*{
+* {
   padding: 0;
   margin: 0;
 }
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 200px auto;
   background-color: burlywood;
-  padding: 20 px;
-  width: 200px;
+  padding: 20px;
+  width: 400px;
   position: relative;
-  
 }
-p{
+p {
   color: white;
   font-size: larger;
 }
-.display{
+.display {
   float: left;
   width: 90%;
   height: 30px;
   background-color: brown;
-  margin:8px;
+  margin: 8px;
 }
-button{
+button {
   padding: 0.5rem;
   margin: 20px;
-  border: 0 solid ;
+  border: 0 solid;
 }
-.center{
+.center {
   margin: 0 auto;
 }
