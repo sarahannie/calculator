@@ -27,10 +27,10 @@ const App = () => {
           operand: "+",
         })
         .then((response) => {
-          alert(response.data);
+          alert("Added to history");
         });
     } catch (error) {
-      alert("Error occured");
+      alert("Failed to save the operation to database");
     }
   };
 
