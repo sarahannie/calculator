@@ -20,17 +20,17 @@ const App = () => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:3000/api/calculations/", {
-        value_one: valueOne,
-        value_two: valueTwo,
-        operand: "+",
-      }).then((response) => {
-        alert(response.data)
-      })
-
-      
+      await axios
+        .post("https://calculator-7s59.onrender.com/api/calculations", {
+          value_one: valueOne,
+          value_two: valueTwo,
+          operand: "+",
+        })
+        .then((response) => {
+          alert("Added to history");
+        });
     } catch (error) {
-      alert("Error occured");
+      alert("Failed to save the operation to database");
     }
   };
 
