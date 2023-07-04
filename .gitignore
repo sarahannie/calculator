@@ -4,6 +4,7 @@
 
 #frontend
 /frontend/node_modules
+/fromtend/.env
 # Logs
 logs
 *.log
