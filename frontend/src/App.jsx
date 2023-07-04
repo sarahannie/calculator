@@ -21,7 +21,7 @@ const App = () => {
   const handleSubmit = async () => {
     try {
       await axios
-        .post("http://localhost:3000/api/calculations/", {
+        .post("https://calculator-7s59.onrender.com/api/calculations", {
           value_one: valueOne,
           value_two: valueTwo,
           operand: "+",
