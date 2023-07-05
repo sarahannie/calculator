@@ -1,23 +1,14 @@
-# Start your image with a node base image
-# syntax=docker/dockerfile:1
-FROM node:14
-
-ENV NODE_ENV=production
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json to the working directory
-COPY ["package.json", "package-lock.json*", "./"]
-
-# Install dependencies
-RUN npm install --production
-
-# Copy the entire project to the working directory
-COPY . .
-
-# Expose the port on which the React Vite app runs (default is 3000)
-EXPOSE 3000
-
-# Set the command to run the React Vite app
-CMD ["npm", "run", "dev"]
+FROM node 
+# - Will create a node environment in the container
+WORKDIR /app 
+# - Will create a directory app and switch to that directory
+COPY package.json . 
+# - Copies package.json file to /app directory
+RUN npm i 
+# - Runs npm install to create node_modules for your app
+COPY . . 
+# - Copies the source code to /app directory
+EXPOSE 5173 
+# - Exposes the port to access the app from outside the container i.e from the browser
+CMD ["npm", "run", "dev"] 
+# - Executes npm run dev to start the server
