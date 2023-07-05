@@ -32,7 +32,7 @@ describe("Should return the operation depending on the operator passed", functio
   it("10-5=5", function () {
     assert.equal(hanldeCalculate("-", "10", "5"), 5);
   });
-  it("20-5=100", function () {
+  it("20*5=100", function () {
     assert.equal(hanldeCalculate("*", "20", "5"), 100);
   });
   it("10/5=2", function () {
