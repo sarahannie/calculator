@@ -9,6 +9,7 @@ const App = () => {
   const [result, setResult] = useState(0);
   const [history, setHistory] = useState([]);
   const [message, setMessage] = useState("");
+  const [length, setLength] = useState(5);
 
   //Select operator
   const handleButtonClick = (e) => {
@@ -73,7 +74,7 @@ const App = () => {
     }
   };
 
-  const lastFiveValues = history.slice(-5);
+  const lastFiveValues = history.slice(-length);
   return (
     <div className="container">
       <div className="calculator">
@@ -130,6 +131,7 @@ const App = () => {
               </li>
             ))}
           </ul>
+          <button onClick={() => setLength(length + 1)}>Show More</button>
         </div>
       </div>
     </div>
