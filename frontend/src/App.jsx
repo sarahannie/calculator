@@ -54,7 +54,7 @@ const App = () => {
           value_two: valueTwo,
           operand: operation,
           result: result,
-        },
+        }
       );
       fetchHistory();
       setMessage("Added to history");
@@ -70,7 +70,7 @@ const App = () => {
   const fetchHistory = async () => {
     try {
       const response = await axios.get(
-        "https://calculator-7s59.onrender.com/api/calculations",
+        "https://calculator-7s59.onrender.com/api/calculations"
       );
       setHistory(response.data);
     } catch (error) {
