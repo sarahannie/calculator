@@ -36,11 +36,11 @@ const App = () => {
         calculatedResult = 0;
     }
     setResult(calculatedResult);
-    handleSubmit(selectedOperation); //submit
+    handleSubmit(selectedOperation, calculatedResult); //submit
   };
 
   //handling submission
-  const handleSubmit = async (operation) => {
+  const handleSubmit = async (operation, result) => {
     try {
       await axios.post(
         "https://calculator-7s59.onrender.com/api/calculations",
@@ -51,6 +51,7 @@ const App = () => {
           result: result,
         }
       );
+      fetchHistory();
       setMessage("Added to history");
     } catch (error) {
       setMessage("Failed to save the operation to the database");
@@ -59,7 +60,7 @@ const App = () => {
 
   useEffect(() => {
     fetchHistory();
-  }, [result]);
+  }, []);
 
   const fetchHistory = async () => {
     try {
