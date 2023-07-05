@@ -10,11 +10,15 @@ const App = () => {
   const [history, setHistory] = useState([]);
   const [message, setMessage] = useState("");
   const [length, setLength] = useState(5);
+  const [operandOne, setOperandOne] = useState(valueOne);
+  const [operandTwo, setOperandTwo] = useState(valueTwo);
 
   //Select operator
   const handleButtonClick = (e) => {
     const operation = e.target.name;
     setSelectedOperation(operation);
+    setOperandOne(valueOne);
+    setOperandTwo(valueTwo);
   };
 
   //caluclate based on the operator
@@ -22,22 +26,22 @@ const App = () => {
     let calculatedResult;
     switch (selectedOperation) {
       case "+":
-        calculatedResult = parseInt(valueOne) + parseInt(valueTwo);
+        calculatedResult = parseInt(operandOne) + parseInt(operandTwo);
         break;
       case "-":
-        calculatedResult = parseInt(valueOne) - parseInt(valueTwo);
+        calculatedResult = parseInt(operandOne) - parseInt(operandTwo);
         break;
       case "*":
-        calculatedResult = parseInt(valueOne) * parseInt(valueTwo);
+        calculatedResult = parseInt(operandOne) * parseInt(operandTwo);
         break;
       case "/":
-        calculatedResult = parseInt(valueOne) / parseInt(valueTwo);
+        calculatedResult = parseInt(operandOne) / parseInt(operandTwo);
         break;
       default:
         calculatedResult = 0;
     }
     setResult(calculatedResult);
-    handleSubmit(selectedOperation, calculatedResult); //submit
+    handleSubmit(selectedOperation, calculatedResult);
   };
 
   //handling submission
@@ -79,15 +83,21 @@ const App = () => {
     <div className="container">
       <div className="calculator">
         <div className="display">
-          <p>{result}</p>
+          <p>
+            {operandOne} {selectedOperation} {operandTwo} = {result}
+          </p>
         </div>
+
         <div>
           <div className="input-container">
             <label>Enter the first value</label>
             <input
               type="number"
               value={valueOne}
-              onChange={(e) => setValueOne(e.target.value)}
+              onChange={(e) => {
+                setValueOne(e.target.value);
+                setOperandOne(e.target.value);
+              }}
             />
           </div>
           <div className="button-container">
@@ -109,7 +119,10 @@ const App = () => {
             <input
               type="number"
               value={valueTwo}
-              onChange={(e) => setValueTwo(e.target.value)}
+              onChange={(e) => {
+                setValueTwo(e.target.value);
+                setOperandTwo(e.target.value);
+              }}
             />
           </div>
         </div>
