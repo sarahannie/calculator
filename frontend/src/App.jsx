@@ -1,47 +1,86 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
 const App = () => {
   const [valueOne, setValueOne] = useState(0);
   const [valueTwo, setValueTwo] = useState(0);
+  const [selectedOperation, setSelectedOperation] = useState("+");
   const [result, setResult] = useState(0);
+  const [history, setHistory] = useState([]);
+  const [message, setMessage] = useState("");
 
-  const handleButtonClick = () => {
-    const sum = parseInt(valueOne) + parseInt(valueTwo);
-    setResult(sum);
+  //Select operator
+  const handleButtonClick = (e) => {
+    const operation = e.target.name;
+    setSelectedOperation(operation);
   };
 
+  //caluclate based on the operator
   const handleCalculate = () => {
-    const sum = parseInt(valueOne) + parseInt(valueTwo);
-    setResult(sum);
-    handleSubmit();
+    let calculatedResult;
+    switch (selectedOperation) {
+      case "+":
+        calculatedResult = parseInt(valueOne) + parseInt(valueTwo);
+        break;
+      case "-":
+        calculatedResult = parseInt(valueOne) - parseInt(valueTwo);
+        break;
+      case "*":
+        calculatedResult = parseInt(valueOne) * parseInt(valueTwo);
+        break;
+      case "/":
+        calculatedResult = parseInt(valueOne) / parseInt(valueTwo);
+        break;
+      default:
+        calculatedResult = 0;
+    }
+    setResult(calculatedResult);
+    handleSubmit(selectedOperation); //submit
   };
 
-  const handleSubmit = async () => {
+  //handling submission
+  const handleSubmit = async (operation) => {
     try {
-      await axios
-        .post("https://calculator-7s59.onrender.com/api/calculations", {
+      await axios.post(
+        "https://calculator-7s59.onrender.com/api/calculations",
+        {
           value_one: valueOne,
           value_two: valueTwo,
-          operand: "+",
-        })
-        .then((response) => {
-          alert("Added to history");
-        });
+          operand: operation,
+          answer: result,
+        }
+      );
+      setMessage("Added to history");
     } catch (error) {
-      alert("Failed to save the operation to database");
+      setMessage("Failed to save the operation to the database");
     }
   };
 
+  useEffect(() => {
+    fetchHistory();
+  }, [result]);
+
+  const fetchHistory = async () => {
+    try {
+      const response = await axios.get(
+        "https://calculator-7s59.onrender.com/api/calculations"
+      );
+      setHistory(response.data);
+    } catch (error) {
+      console.error("Failed to fetch calculation history:", error);
+    }
+  };
+
+  const lastFiveValues = history.slice(-5);
   return (
     <div className="container">
-      <div className="center">
+      <div className="calculator">
         <div className="display">
           <p>{result}</p>
         </div>
         <div>
-          <div>
+          <div className="input-container">
             <label>Enter the first value</label>
             <input
               type="number"
@@ -52,7 +91,17 @@ const App = () => {
           <button name="+" onClick={handleButtonClick}>
             +
           </button>
-          <div>
+          <button name="-" onClick={handleButtonClick}>
+            -
+          </button>
+          <button name="*" onClick={handleButtonClick}>
+            *
+          </button>
+          <button name="/" onClick={handleButtonClick}>
+            /
+          </button>
+
+          <div className="input-container">
             <label>Enter the second value</label>
             <input
               type="number"
@@ -61,11 +110,25 @@ const App = () => {
             />
           </div>
         </div>
-        <div>
-          <button name="=" onClick={handleCalculate}>
+        <div className="submit-container">
+          <button name="=" onClick={handleCalculate} className="submit-button">
             =
           </button>
         </div>
+        <div>
+          <p>{message}</p>
+        </div>
+      </div>
+      <div>
+        <h2>Calculation History</h2>
+        <ul>
+          {lastFiveValues.map((calculation, index) => (
+            <li key={index}>
+              {calculation.value_one} {calculation.operand}{" "}
+              {calculation.value_two} = {calculation.result}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
