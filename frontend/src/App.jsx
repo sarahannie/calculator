@@ -48,7 +48,7 @@ const App = () => {
           value_one: valueOne,
           value_two: valueTwo,
           operand: operation,
-          answer: result,
+          result: result,
         }
       );
       setMessage("Added to history");
