@@ -89,19 +89,20 @@ const App = () => {
               onChange={(e) => setValueOne(e.target.value)}
             />
           </div>
-          <button name="+" onClick={handleButtonClick}>
-            +
-          </button>
-          <button name="-" onClick={handleButtonClick}>
-            -
-          </button>
-          <button name="*" onClick={handleButtonClick}>
-            *
-          </button>
-          <button name="/" onClick={handleButtonClick}>
-            /
-          </button>
-
+          <div className="button-container">
+            <button name="+" onClick={handleButtonClick}>
+              +
+            </button>
+            <button name="-" onClick={handleButtonClick}>
+              -
+            </button>
+            <button name="*" onClick={handleButtonClick}>
+              *
+            </button>
+            <button name="/" onClick={handleButtonClick}>
+              /
+            </button>
+          </div>
           <div className="input-container">
             <label>Enter the second value</label>
             <input
@@ -119,17 +120,17 @@ const App = () => {
         <div>
           <p>{message}</p>
         </div>
-      </div>
-      <div>
-        <h2>Calculation History</h2>
-        <ul>
-          {lastFiveValues.map((calculation, index) => (
-            <li key={index}>
-              {calculation.value_one} {calculation.operand}{" "}
-              {calculation.value_two} = {calculation.result}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h2>Calculation History</h2>
+          <ul>
+            {lastFiveValues.map((calculation, index) => (
+              <li key={index}>
+                {calculation.value_one} {calculation.operand}{" "}
+                {calculation.value_two} = {calculation.result}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
