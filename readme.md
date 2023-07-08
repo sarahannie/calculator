@@ -9,7 +9,7 @@
     <a href="https://github.com/badges/shields/pulse" alt="Activity">
         <img src="https://img.shields.io/github/commit-activity/m/badges/shields" /></a> 
 </p>
-<p  align="center">
+
     ![GitHub followers](https://img.shields.io/github/followers/sarahannie)
     ![GitHub User's stars](https://img.shields.io/github/stars/sarahannie)
     ![npm bundle size](https://img.shields.io/bundlephobia/min/npm)
@@ -17,5 +17,5 @@
     ![Lines of code](https://img.shields.io/tokei/lines/github/sarahannie/calculator)
     ![GitHub pull requests](https://img.shields.io/github/issues-pr/sarahannie/calculator)
 
-</p>
+
 
