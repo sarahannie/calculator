@@ -3,6 +3,9 @@
     <a href="#backers" alt="followers">
         <img src="https://img.shields.io/github/followers/sarahannie" />
     </a>
+    <a href="#backers" alt="language">
+        <img src="https://img.shields.io/github/languages/count/sarahannie/calculator" />
+    </a>
     <a href="#backers" alt="pull request">
         <img src="https://img.shields.io/github/issues-pr/sarahannie/calculator" />
     </a>
@@ -18,6 +21,7 @@
     <a href="#backers" alt="rep_star">
         <img src="https://img.shields.io/github/stars/sarahannie"/>
     </a>
-    
 </p>
+
+
 
