@@ -19,7 +19,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 // Build backend component
-                sh 'cd backend && npm install --production' // Build backend code using Gradle
+                sh 'cd backend && npm install --production' 
                 sh 'cd backend && node app.js ' 
             }
          }
