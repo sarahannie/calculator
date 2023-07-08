@@ -1,8 +1,14 @@
+
 import { useState, useEffect } from "react";
+import logger from "./logger";
 import "./App.css";
 import axios from "axios";
 
 const App = () => {
+
+  
+
+
   const [valueOne, setValueOne] = useState(0);
   const [valueTwo, setValueTwo] = useState(0);
   const [selectedOperation, setSelectedOperation] = useState("+");
@@ -74,10 +80,10 @@ const App = () => {
       );
       setHistory(response.data);
     } catch (error) {
-      console.error("Failed to fetch calculation history:", error);
+      logger.error("Failed to fetch calculation history:", error);
     }
   };
-
+  // logger.log("hello world")
   const lastFiveValues = history.slice(-length);
   return (
     <div className="container">

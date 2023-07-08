@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -5,6 +6,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const logger = require("./logger/appLogger")
 const port = process.env.PORT || 3000;
 
 const config = require("./config");
@@ -21,14 +23,15 @@ mongoose.connect(config.connect, {
 const db = mongoose.connection;
 //checking if db has connected
 db.once("open", () => {
-  console.log("connected to db");
+  logger.log("connected to db");
 });
 db.on("error", (err) => {
-  console.error(err);
+  logger.error(err);
 });
 
 //import routes
 const apiRoutes = require("./routes/api");
+const { loggers } = require("winston");
 
 //Requests
 app.get("/", (req, res) => {
