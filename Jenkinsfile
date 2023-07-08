@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'docker' // Run pipeline on an agent with Docker support
-    }
+    agent any
     stages {
         stage('Checkout') {
             steps {
