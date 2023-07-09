@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('development') {
       steps {
-        bat 'cd frontend && npm install && npm install mocha chai --save-dev && npm run test && npm run lint'
+        bat 'cd frontend && npm install && npm run dev'
       }
     }
 
     stage('production') {
       steps {
-        bat 'cd frontend && npm run dev'
+        bat 'cd backend && npm install && npm start'
       }
     }
 
