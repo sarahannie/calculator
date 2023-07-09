@@ -22,7 +22,8 @@
         <img src="https://img.shields.io/github/stars/sarahannie"/>
     </a>
 </p>
-![GitHub top language](https://img.shields.io/github/languages/top/kalibbalajohnson/calculator)
+[![GitHub top language](https://img.shields.io/github/languages/top/kalibbalajohnson/calculator)](https://github.com/kalibbalajohnson/calculator)
+
 
 
 
