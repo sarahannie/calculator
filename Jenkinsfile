@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('production') {
+      steps {
+        echo 'Ready for production'
+      }
+    }
+
   }
 }
