@@ -1,7 +1,6 @@
 import React from "react";
-
 import ReactDOM from "react-dom";
-import { handleCalculate } from "./handleCalculate";
+import { handleCalculate } from "../hooks/handleCalculate";
 import { assert } from "chai";
 
 describe("Should return the operation depending on the operator passed", function () {
