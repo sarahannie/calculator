@@ -83,7 +83,7 @@ const App = () => {
       logger.error("Failed to fetch calculation history:", error);
     }
   };
-  // logger.log("hello world")
+  
   const lastFiveValues = history.slice(-length);
   return (
     <div className="container">
