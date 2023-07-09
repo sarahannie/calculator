@@ -1,4 +1,4 @@
-# Calculator Application
+# Calculator 
 <p>
     <a href="#backers" alt="followers">
         <img src="https://img.shields.io/github/followers/sarahannie" />
