@@ -6,6 +6,9 @@
     <a href="#backers" alt="language">
         <img src="https://img.shields.io/github/languages/count/sarahannie/calculator" />
     </a>
+    <a href="#backers" alt="top language">
+        <img src="https://img.shields.io/github/languages/top/kalibbalajohnson/calculator" />
+    </a>
     <a href="#backers" alt="pull request">
         <img src="https://img.shields.io/github/issues-pr/sarahannie/calculator" />
     </a>
@@ -22,7 +25,7 @@
         <img src="https://img.shields.io/github/stars/sarahannie"/>
     </a>
 </p>
-[![GitHub top language](https://img.shields.io/github/languages/top/kalibbalajohnson/calculator)](https://github.com/kalibbalajohnson/calculator)
+
 
 
 
