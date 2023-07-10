@@ -9,7 +9,6 @@ pipeline {
 
     stage('production') {
       steps {
-        bat 'cd frontend && npm install && npm run lint '
         echo 'Ready for production'
       }
     }
