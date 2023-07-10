@@ -3,12 +3,12 @@ const { combine, timestamp, label, printf } = format;
 
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
-    return `${timestamp} [${label}] ${level}: ${message}`;
+    return `${timestamp}  ${level}: ${message}`;
   });
 
 const productionLogger = () =>{
     return  createLogger({
-        level: 'debug ',
+        level: 'debug',
         format:  combine(
             timestamp({format:"HH:mm:ss"}),
             myFormat

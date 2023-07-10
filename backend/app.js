@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); 
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -21,15 +21,14 @@ mongoose.connect(config.connect, {
 const db = mongoose.connection;
 //checking if db has connected
 db.once("open", () => {
-  logger.log("connected to db");
+  logger.info("connected to db");
 });
 db.on("error", (err) => {
   logger.error(err);
 });
 
-//import routes
+//import routes 
 const apiRoutes = require("./routes/api");
-const { loggers } = require("winston");
 
 //Requests
 app.get("/", (req, res) => {
@@ -38,4 +37,4 @@ app.get("/", (req, res) => {
 
 app.use("/api", apiRoutes);
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(port, () => logger.info(`listening on port ${port}`));
