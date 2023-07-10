@@ -8,7 +8,7 @@ const myFormat = printf(({ level, message, label, timestamp }) => {
 
 const productionLogger = () =>{
     return  createLogger({
-        level: 'debug ',
+        level: 'debug',
         format:  combine(
             timestamp({format:"HH:mm:ss"}),
             myFormat
