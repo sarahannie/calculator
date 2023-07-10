@@ -17,8 +17,7 @@
         <img src="https://img.shields.io/bundlephobia/min/npm"/>
     </a>
     <a href="#backers" alt="rep_star">
-        <img src="https://img.shields.io/github/languages/top/sarahannie/calculator
-"/>
+        <img src="https://img.shields.io/github/languages/top/sarahannie/calculator"/>
     </a>
     <a href="#backers" alt="rep_star">
         <img src="https://img.shields.io/github/stars/sarahannie"/>
