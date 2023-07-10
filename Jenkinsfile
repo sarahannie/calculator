@@ -10,6 +10,7 @@ pipeline {
     stage('production') {
       steps {
         echo 'Ready for production'
+        bat 'cd frontend && docker run --publish 8000:8000 calc'
       }
     }
 
