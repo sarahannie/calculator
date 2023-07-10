@@ -25,7 +25,6 @@
 </p>
 
 # Development And Deployment Environment
-![GitHub top language](https://img.shields.io/github/languages/top/sarahannie/calculator)
 ![jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=Jenkins&logoColor=white)
 ![git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 ![database](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
