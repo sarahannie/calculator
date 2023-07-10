@@ -1,17 +1,12 @@
-
 import { useState, useEffect } from "react";
 import logger from "./logger";
 import "./App.css";
 import axios from "axios";
-
+import { handleCalculate } from "./hooks/handleCalculate";
 const App = () => {
-
-  
-
-
   const [valueOne, setValueOne] = useState(0);
   const [valueTwo, setValueTwo] = useState(0);
-  const [selectedOperation, setSelectedOperation] = useState("+");
+  const [selectedOperation, setSelectedOperation] = useState("");
   const [result, setResult] = useState(0);
   const [history, setHistory] = useState([]);
   const [message, setMessage] = useState("");
@@ -28,26 +23,12 @@ const App = () => {
   };
 
   //caluclate based on the operator
-  const handleCalculate = () => {
-    let calculatedResult;
-    switch (selectedOperation) {
-      case "+":
-        calculatedResult = parseInt(operandOne) + parseInt(operandTwo);
-        break;
-      case "-":
-        calculatedResult = parseInt(operandOne) - parseInt(operandTwo);
-        break;
-      case "*":
-        calculatedResult = parseInt(operandOne) * parseInt(operandTwo);
-        break;
-      case "/":
-        calculatedResult = parseInt(operandOne) / parseInt(operandTwo);
-        break;
-      default:
-        calculatedResult = 0;
-    }
-    setResult(calculatedResult);
-    handleSubmit(selectedOperation, calculatedResult);
+  const calculate = () => {
+    setResult(handleCalculate(selectedOperation, operandOne, operandTwo));
+    handleSubmit(
+      selectedOperation,
+      handleCalculate(selectedOperation, operandOne, operandTwo)
+    );
   };
 
   //handling submission
@@ -60,7 +41,7 @@ const App = () => {
           value_two: valueTwo,
           operand: operation,
           result: result,
-        },
+        }
       );
       fetchHistory();
       setMessage("Added to history");
@@ -76,9 +57,11 @@ const App = () => {
   const fetchHistory = async () => {
     try {
       const response = await axios.get(
-        "https://calculator-7s59.onrender.com/api/calculations",
+        "https://calculator-7s59.onrender.com/api/calculations"
       );
       setHistory(response.data);
+      setValueOne(0);
+      setValueTwo(0);
     } catch (error) {
       logger.error("Failed to fetch calculation history:", error);
     }
@@ -89,9 +72,15 @@ const App = () => {
     <div className="container">
       <div className="calculator">
         <div className="display">
-          <p>
-            {operandOne} {selectedOperation} {operandTwo} = {result}
-          </p>
+          {result ? (
+            <p>{result}</p>
+          ) : (
+            <p>
+              {operandOne > 0 && operandOne}{" "}
+              {selectedOperation && selectedOperation}{" "}
+              {operandTwo > 0 && operandTwo}
+            </p>
+          )}
         </div>
 
         <div>
@@ -104,6 +93,7 @@ const App = () => {
                 setValueOne(e.target.value);
                 setOperandOne(e.target.value);
               }}
+              onInput={() => setResult(0)}
             />
           </div>
           <div className="button-container">
@@ -133,7 +123,7 @@ const App = () => {
           </div>
         </div>
         <div className="submit-container">
-          <button name="=" onClick={handleCalculate} className="submit-button">
+          <button name="=" onClick={calculate} className="submit-button">
             =
           </button>
         </div>
