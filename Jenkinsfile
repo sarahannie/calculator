@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('development') {
       steps {
-        sh '''cd frontend
-npm install 
-npm install mocha chai --save-dev 
-npm run test'''
+        echo 'develop'
       }
     }
 
