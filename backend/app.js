@@ -23,7 +23,7 @@ mongoose.connect(config.connect, {
 const db = mongoose.connection;
 //checking if db has connected
 db.once("open", () => {
-  logger.log("connected to db");
+  logger.info("connected to db");
 });
 db.on("error", (err) => {
   logger.error(err);
@@ -40,4 +40,4 @@ app.get("/", (req, res) => {
 
 app.use("/api", apiRoutes);
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(port, () => logger.info(`listening on port ${port}`));
