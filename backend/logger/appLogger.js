@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const productionLogger = require("./productionLogger")
 let logger = null;
 

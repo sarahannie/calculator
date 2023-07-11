@@ -1,8 +1,7 @@
-require('dotenv').config();
+/* eslint-disable no-undef */
+require('dotenv').config(); 
 const express = require("express");
 const app = express();
-const path = require("path");
-const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -29,9 +28,8 @@ db.on("error", (err) => {
   logger.error(err);
 });
 
-//import routes
+//import routes 
 const apiRoutes = require("./routes/api");
-const { loggers } = require("winston");
 
 //Requests
 app.get("/", (req, res) => {

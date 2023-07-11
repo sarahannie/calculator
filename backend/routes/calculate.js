@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       res.send("Succeeded!");
     })
     .catch((err) => {
-      res.send("Failde to save to history!");
+      res.send("Failed to save to history!");
     });
 });
 
